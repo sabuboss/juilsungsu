@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ meta.title }} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ meta.description }}{% endblock %}
+{% block body %}
+<nav class="crumb"><a href="/">홈</a> › <span>{{ meta.title }}</span></nav>
+<h1>{{ meta.title }}</h1>
+{% if meta.updated %}<p class="muted">마지막 수정: {{ meta.updated }}</p>{% endif %}
+<div class="page">{{ body|safe }}</div>
+{% endblock %}

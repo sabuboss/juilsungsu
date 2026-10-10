@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "prayer-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["build.py", "--serve", "--drafts", "--today", "2026-10-19", "--port", "8765"],
+      "port": 8765
+    }
+  ]
+}

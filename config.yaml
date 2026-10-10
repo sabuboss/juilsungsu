@@ -1,0 +1,11 @@
+# 사이트 설정 — 미정 값은 TODO로 둠 (PRAYER_SITE_SPEC.md 15장)
+site_name: "주일성수"
+base_url: "https://juilsungsu.com"
+launch_date: "2026-10-19"         # 공개 시작일
+timezone: "Asia/Seoul"
+read_cpm: 270                     # 분당 낭독 글자수(공백 제외) — 실측 후 교정
+adsense_client: ""                # 비어 있으면 광고 코드 미삽입
+cf_analytics_token: ""
+naver_site_verification: ""
+google_site_verification: ""
+author: "sabuboss"

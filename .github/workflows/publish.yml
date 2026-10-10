@@ -1,0 +1,28 @@
+name: publish
+on:
+  push:
+    branches: [main]
+  schedule:
+    # 00:00 UTC 정각은 전 세계 크론이 몰려 밀리므로 비켜 둔다. 23:52 UTC = 08:52 KST → 09:00 전후 발행
+    - cron: "52 23 * * *"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: 검사 (오류가 있으면 배포하지 않음)
+        run: python tools/validate.py
+      - name: 빌드
+        run: TZ=Asia/Seoul python build.py
+      - name: dist 브랜치로 배포 (Cloudflare Pages 가 이 브랜치를 봅니다 — 마음체크와 같은 방식)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: dist

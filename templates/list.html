@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "_card.html" import card %}
+{% block title %}{{ title }} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ lead }} {{ items|length }}편.{% endblock %}
+{% block body %}
+<nav class="crumb"><a href="/">홈</a> › <span>{{ title }}</span></nav>
+<h1>{{ title }}</h1>
+<p class="lead">{{ lead }}</p>
+{% if kind == "group" %}
+<p class="muted">교단마다 이름이 다릅니다 (장립집사회=안수집사회, 남전도회=남선교회, 구역=속회·목장). 같은 모임이면 그대로 쓰시면 됩니다.</p>
+{% endif %}
+{% if kind == "month" %}
+  {% for cat, n in groups if n %}
+  <h2>{{ cat }}</h2>
+  <div class="cards">{% for p in items if p.category == cat %}{{ card(p) }}{% endfor %}</div>
+  {% endfor %}
+{% else %}
+  <div class="cards">{% for p in items %}{{ card(p) }}{% endfor %}</div>
+{% endif %}
+{{ ad|safe }}
+{% endblock %}

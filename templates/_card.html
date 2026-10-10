@@ -1,0 +1,9 @@
+{# 기도문 카드 (홈·목록 공통). 쓰는 쪽: {% from "_card.html" import card %} #}
+{% macro card(p, label=None, big=False) -%}
+<a class="card{% if big %} big{% endif %}{% if p.is_draft %} draft{% endif %}" href="{{ p.url }}">
+  {% if label %}<span class="lbl">{{ label }}</span>{% endif %}
+  <span class="chips"><span class="chip {{ p.color }}">{{ p.season }}</span><span class="chip">{{ p.worship_type }}</span>{% if p.group %}<span class="chip">{{ p.group }}</span>{% endif %}</span>
+  <b>{{ p.title }}</b>
+  <small>{{ p.date_label }} · {{ p.read_label }} · {{ p.stats.chars_no_space }}자{% if p.is_draft %} · 검수 대기{% endif %}</small>
+</a>
+{%- endmacro %}

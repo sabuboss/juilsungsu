@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}기도문 검색 | {{ site.site_name }}{% endblock %}
+{% block description %}날짜, 절기, 부서, 상황으로 대표기도문을 찾습니다.{% endblock %}
+{% block head %}<meta name="robots" content="noindex, follow">{% endblock %}
+{% block body %}
+<h1>기도문 검색</h1>
+<p class="lead">예: 11월 셋째주, 추수감사, 권사회, 장례, 수험생</p>
+<form class="search" onsubmit="return false"><input type="search" id="q" placeholder="찾는 말을 입력하세요" autocomplete="off" autofocus></form>
+<div id="results" class="cards"></div>
+<p id="empty" class="muted" hidden>찾는 결과가 없습니다. 다른 말로 찾아보세요.</p>
+{% endblock %}
+{% block scripts %}<script src="{{ asset('search.js') }}" defer></script>{% endblock %}

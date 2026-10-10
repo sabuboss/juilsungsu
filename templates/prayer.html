@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% from "_card.html" import card %}
+{% block title %}{{ p.seo_title }}{% endblock %}
+{% block description %}{{ p.seo_description }}{% endblock %}
+{% block ogtype %}article{% endblock %}
+{% block ogimage %}{{ p.og_image }}{% endblock %}
+{% block head %}
+<meta property="article:published_time" content="{{ p.eff_publish }}">
+<script type="application/ld+json">{{ jsonld|safe }}</script>
+{% endblock %}
+{% block body %}
+{% if p.is_draft %}<div class="band">검수 대기 — 아직 공개되지 않은 초안입니다</div>{% endif %}
+<nav class="crumb">{% for name, url in crumbs %}{% if not loop.last %}<a href="{{ url }}">{{ name }}</a> › {% else %}<span>{{ name }}</span>{% endif %}{% endfor %}</nav>
+<h1>{{ p.title }}</h1>
+<div class="chips meta">
+  {% if p.service_date %}<span class="chip">{{ p.date_label }}</span>{% endif %}
+  <span class="chip">{{ p.worship_type }}</span>
+  {% if p.group %}<span class="chip">{{ p.group }}</span>{% endif %}
+  <span class="chip {{ p.color }}">{{ p.season }}</span>
+  <span class="chip">{{ p.read_label }}</span>
+  <span class="chip">{{ p.stats.chars_no_space }}자</span>
+</div>
+
+<div class="context">{{ p.context }}</div>
+
+{{ ad|safe }}
+
+<div class="toolbar" id="toolbar">
+  <button type="button" id="btn-copy">전체 복사</button>
+  <a class="btn" href="{{ p.print_url }}" target="_blank" rel="noopener">인쇄(강단용)</a>
+  <button type="button" id="btn-share" data-url="{{ p.abs_url }}" data-title="{{ p.title }}">공유</button>
+  <span class="fs"><button type="button" data-fs="-" aria-label="글씨 작게">가−</button><button type="button" data-fs="+" aria-label="글씨 크게">가+</button></span>
+</div>
+
+<article class="prayer" id="prayer">
+{% for para in p.paragraphs %}<p>{{ para }}</p>
+{% endfor %}
+</article>
+
+<section class="box">
+  <h2>바꿔 쓰는 곳</h2>
+  <ul>{% for c in p.customize %}<li>{{ c }}</li>{% endfor %}</ul>
+  <h2>활용 팁</h2>
+  <ul>{% for t in p.tips %}<li>{{ t }}</li>{% endfor %}</ul>
+</section>
+
+{{ ad|safe }}
+
+{% if related %}
+<h2>관련 기도문</h2>
+<div class="cards">{% for label, q in related %}{{ card(q, label=label) }}{% endfor %}</div>
+{% endif %}
+
+<p class="notice">이 사이트의 기도문은 모두 직접 작성했으며 예배에서 자유롭게 사용하셔도 됩니다. 다른 사이트에 옮길 때는 출처를 남겨 주세요.</p>
+{% if p.tags %}<p class="tags">{% for t in p.tags %}<span>#{{ t }}</span> {% endfor %}</p>{% endif %}
+{% endblock %}
+{% block scripts %}<script src="{{ asset('prayer.js') }}" defer></script>{% endblock %}

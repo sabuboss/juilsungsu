@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "_card.html" import card %}
+{% block title %}{{ site.site_name }} — 이번 주일 대표기도문{% endblock %}
+{% block description %}이번 주일 대표기도문을 바로 읽고 복사하고 인쇄하세요. 주일 오전·오후예배, 수요·금요기도회, 권사회·남전도회·성가대·교회학교 소모임, 장례·결혼·헌신예배 등 상황별 대표기도문 무료 제공.{% endblock %}
+{% block body %}
+<section class="hero">
+  <p class="eyebrow">주일 대표기도를 맡으셨나요?</p>
+  <h1>이번 주일 대표기도문</h1>
+  <p class="sub">읽고, 복사하고, 강단용으로 인쇄해서 바로 쓰실 수 있습니다. 호칭 두 곳만 바꾸시면 됩니다.</p>
+</section>
+
+<div class="cards hero-cards">
+{% for label, p, d in hero %}
+  {% if p %}{{ card(p, label=label ~ " · " ~ fmt_date(d), big=True) }}
+  {% else %}<div class="card big empty"><span class="lbl">{{ label }} · {{ fmt_date(d) }}</span><b>준비 중입니다</b><small>예배일 3주 전에 공개됩니다</small></div>{% endif %}
+{% endfor %}
+</div>
+
+{% if upcoming %}
+<h2>다가오는 주일·절기 예배</h2>
+<div class="cards">{% for p in upcoming %}{{ card(p) }}{% endfor %}</div>
+{% endif %}
+
+{% if seasons %}
+<h2>절기별 모음</h2>
+<div class="tnav">{% for k, name, n in seasons %}<a class="tchip {{ season_colors.get(k, '') }}" href="/season/{{ k }}/">{{ name }} <i>{{ n }}</i></a>{% endfor %}</div>
+{% endif %}
+
+{% if month_groups %}
+<h2>이번 달 소모임 기도문 <span class="h2sub">2분 이내</span></h2>
+<div class="cards">{% for p in month_groups %}{{ card(p) }}{% endfor %}</div>
+{% endif %}
+
+{{ ad|safe }}
+
+<h2>상황별 기도문 <span class="h2sub">장례·결혼·헌신예배·심방·회의</span></h2>
+{% if anytime %}<div class="cards">{% for p in anytime %}{{ card(p) }}{% endfor %}</div>
+<p class="more"><a href="/anytime/">상황별 기도문 전체 보기 →</a></p>
+{% else %}<p class="muted">준비 중입니다. 매주 한 편씩 추가됩니다.</p>{% endif %}
+
+{% if months %}
+<h2>월별 모음</h2>
+<div class="tnav">{% for m in months %}<a class="tchip" href="/month/{{ m }}/">{{ fmt_month(m) }}</a>{% endfor %}</div>
+{% endif %}
+
+<section class="about-box">
+  <h2>이 사이트는</h2>
+  <p>매주 대표기도를 맡은 성도가 검색해서 들어와 바로 쓸 수 있도록, 예배일 약 3주 전에 그 주일의 대표기도문을 공개합니다. 모든 기도문은 쉬운 우리말로 직접 썼고, 3~4분(본당)·2분 이내(소모임) 분량으로 맞췄습니다. 현재 {{ total }}편이 공개되어 있습니다.</p>
+</section>
+{% endblock %}

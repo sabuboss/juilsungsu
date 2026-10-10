@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ p.title }} — 인쇄</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="{{ p.abs_url }}">
+<link rel="stylesheet" href="{{ asset('print.css') }}">
+</head>
+<body>
+<div class="screen-only bar">
+  <button type="button" onclick="window.print()">인쇄하기</button>
+  <a href="{{ p.url }}">← 돌아가기</a>
+  <span>A4 세로 · 맑은 고딕 14pt · 2쪽 이내</span>
+</div>
+<header class="head">
+  <h1>{{ p.title }}</h1>
+  {% if p.service_date %}<p>{{ p.date_label }}{% if p.group %} · {{ p.group }}{% endif %}</p>{% endif %}
+</header>
+<article class="prayer">
+{% for para in p.paragraphs %}<p>{{ para }}</p>
+{% endfor %}
+</article>
+<footer class="foot">{{ site.base_url|replace("https://", "") }}{{ p.url }}</footer>
+</body>
+</html>
