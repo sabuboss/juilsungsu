@@ -278,9 +278,10 @@ TYPE_PAGES = [
     ("visit", "심방", lambda p: p["worship_type"] == "심방"),
     ("home-worship", "가정예배", lambda p: p["worship_type"] == "가정예배"),
     ("meeting", "회의", lambda p: p["worship_type"] == "회의"),
+    ("committee", "위원회·봉사부서", lambda p: p["worship_type"] == "위원회·부서 모임"),
 ]
 WORSHIP_TYPES = ["sunday", "dawn-prayer", "special-worship", "wednesday", "friday"]
-SITUATION_TYPES = ["funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
+SITUATION_TYPES = ["committee", "funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
 TYPE_LEADS = {
     "sunday": "주일 오전·오후(저녁)예배 대표기도문입니다. 실제 낭독 약 4분 분량입니다.",
     "dawn-prayer": "특별새벽기도회 요일별(월~토) 대표기도문과 요일 무관 공통 기도문입니다. 날마다 공동기도제목을 모두 담았습니다.",
@@ -289,6 +290,7 @@ TYPE_LEADS = {
     "wedding": "결혼예배 대표기도문입니다.",
     "dedication": "남전도회·여전도회·권사회·안수집사회·청년부·교회학교 헌신예배 대표기도문입니다.",
     "church-event": "임직예배, 교회 창립기념주일 등 교회 행사 대표기도문입니다.",
+    "committee": "재정위원회·새가족부·헌금계수부·선교위원회·차량부·식당봉사부 등 위원회와 봉사부서 모임을 시작할 때 드리는 개회 기도문입니다.",
 }
 
 
