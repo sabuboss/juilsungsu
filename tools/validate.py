@@ -177,7 +177,7 @@ def check(p, cal, banned, all_prayers):
         for q in all_prayers:
             if q["id"] == pid or not q.get("paragraphs"):
                 continue
-            other = ngrams("\n".join(q["paragraphs"]))
+            other = ngrams_of(q)
             ratio = len(mine & other) / len(mine)
             if ratio > 0.25:
                 W(f"{q['id']} 와 3어절 겹침 {ratio:.0%}")
