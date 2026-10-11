@@ -54,6 +54,13 @@ def slug_for(r):
     gk = GROUP_KEYS.get(r["group"], re.sub(r"[^a-z0-9-]", "", r["group"].lower()) or "group")
     if pid.endswith("-sp"):
         return f"{d}-{gk}-{word or 'special'}"
+    tail = pid.rsplit("-", 1)[1]
+    if tail == "first":
+        return f"{d[:7]}-group-{gk}-month-start"
+    if tail == "assembly":
+        return f"{d[:7]}-{gk}-annual-meeting"
+    if tail == "yearend":
+        return f"{d[:7]}-{gk}-year-end-gathering"
     return f"{d[:7]}-group-{gk}"
 
 
@@ -64,6 +71,8 @@ def length_class(r):
         return "3~4분"
     if r["category"] == "상황별":
         return "1~2분"
+    if r["worship_type"] == "월초 기도":
+        return "1분 안팎"
     return r["length"]
 
 

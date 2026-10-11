@@ -51,6 +51,17 @@ def sentences(text):
     return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
 
 
+_NG = {}
+
+
+def ngrams_of(p):
+    """기도문별 3어절 n-gram 을 한 번만 계산해 둔다 (편수가 늘면 검사가 느려지므로)."""
+    key = p.get("id")
+    if key not in _NG:
+        _NG[key] = ngrams("\n".join(p.get("paragraphs", [])))
+    return _NG[key]
+
+
 def ngrams(text, n=3):
     w = re.sub(r"[^\w\s]", "", text).split()
     return {" ".join(w[i:i + n]) for i in range(len(w) - n + 1)}
@@ -161,7 +172,7 @@ def check(p, cal, banned, all_prayers):
             W(f"성경 직접 인용 의심: {s[:40]}…")
 
     # --- 중복 (3어절 n-gram)
-    mine = ngrams(body)
+    mine = ngrams_of(p)
     if mine:
         for q in all_prayers:
             if q["id"] == pid or not q.get("paragraphs"):
