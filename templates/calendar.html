@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}{{ cm.y }}년 {{ cm.m }}월 대표기도문 달력 | {{ site.site_name }}{% endblock %}
+{% block description %}{{ cm.y }}년 {{ cm.m }}월 주일·절기 예배와 소모임 대표기도문을 달력으로 봅니다. 날짜를 누르면 그날 쓰는 기도문으로 갑니다.{% endblock %}
+{% macro item(e) -%}
+{% if e.url %}<a class="ce {{ e.color }}{% if e.cat != '본당' %} sub{% endif %}" href="{{ e.url }}" title="{{ e.title }}">{{ e.label }}</a>
+{%- else %}<span class="ce soon" title="{{ e.title }} — {{ e.pub }} 공개">{{ e.label }} <i>{{ e.pub }} 공개</i></span>{% endif %}
+{%- endmacro %}
+{% block body %}
+<nav class="crumb"><a href="/">홈</a> › <span>달력</span></nav>
+<div class="calhead">
+  {% if cm.prev %}<a class="calnav" href="/calendar/{{ cm.prev }}/" aria-label="이전 달">‹</a>{% else %}<span class="calnav off">‹</span>{% endif %}
+  <h1>{{ cm.y }}년 {{ cm.m }}월</h1>
+  {% if cm.next %}<a class="calnav" href="/calendar/{{ cm.next }}/" aria-label="다음 달">›</a>{% else %}<span class="calnav off">›</span>{% endif %}
+</div>
+<p class="lead">날짜를 누르면 그날 예배에 쓰는 대표기도문으로 갑니다. 흐린 글씨는 공개 예정입니다.</p>
+
+<table class="cal" aria-label="{{ cm.y }}년 {{ cm.m }}월 달력">
+  <thead><tr>{% for w in ['주일','월','화','수','목','금','토'] %}<th{% if loop.first %} class="sun"{% endif %}>{{ w }}</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for wk in cm.weeks %}<tr>
+    {% for c in wk %}<td class="{% if not c.in %}out{% endif %}{% if c.today %} today{% endif %}{% if c.sun %} sun{% endif %}">
+      <span class="dn">{{ c.d }}</span>
+      {% if c.in %}{% for e in c['items'] %}{{ item(e) }}{% endfor %}{% endif %}
+    </td>{% endfor %}
+  </tr>{% endfor %}
+  </tbody>
+</table>
+
+<section class="agenda">
+  {% for day, es in cm.agenda %}
+  <div class="aday"><b>{{ day }}</b><div>{% for e in es %}{{ item(e) }}{% endfor %}</div></div>
+  {% else %}<p class="muted">이 달에는 날짜가 정해진 기도문이 아직 없습니다.</p>{% endfor %}
+</section>
+
+{% if cm.monthly %}
+<section class="monthly">
+  <h2>이달 내내 쓰는 기도문 <span class="h2sub">월례회 · 월초 기도 · 부서 예배 · 수요 · 금요</span></h2>
+  <div class="mlist">{% for e in cm.monthly %}{{ item(e) }}{% endfor %}</div>
+</section>
+{% endif %}
+
+<p class="more"><a href="/month/{{ cm.ym }}/">{{ cm.y }}년 {{ cm.m }}월 기도문 목록으로 보기 →</a></p>
+{% endblock %}

@@ -153,6 +153,88 @@ def enrich(p):
     return p
 
 
+# ---------------------------------------------------------------- 달력 /calendar/{yyyy-mm}/
+MONTHLY_TYPES = ("월례 모임", "월초 기도", "수요예배", "금요기도회")
+
+
+def cal_label(p):
+    """달력 칸에 들어갈 짧은 이름."""
+    g, wt = p.get("group") or "", p["worship_type"]
+    if wt == "월초 기도":
+        return f"{g} 월초"
+    if wt == "월례 모임":
+        if "월례회" in p["title"]:
+            return f"{g} 월례회"
+        return f"{g} {'연습' if g == '성가대' else '예배'}"
+    if wt in ("수요예배", "금요기도회"):
+        return wt
+    if wt == "정기총회":
+        return f"{g} 총회"
+    if wt == "송년 모임":
+        return f"{g} 송년"
+    if wt == "절기 특별":
+        t = re.sub(r"^\d{4}년 ", "", p["title"])
+        t = re.sub(r"\s*기도(문)?$", "", t).replace("교회학교 연합 ", "교회학교 ").replace(" 축하 ", " ")
+        return t.replace("을 위한", "").replace("수험생 ", "수험생")
+    if p["category"] == "본당" and p["id"].endswith("-sp"):
+        t = re.sub(r"^\d{4}년 ", "", p["title"])
+        return re.sub(r"\s*(예배)?\s*대표기도문$", "", t)
+    t = re.sub(r"^\d{4}년 ", "", p["title"])
+    t = re.sub(r"\s*(대표기도문|기도문)$", "", t)
+    if p["category"] == "본당" and p["worship_type"] == "주일 오전예배":
+        t = re.sub(r"\(.*?\)", "", t).replace(" 오전예배", "").strip()
+        if re.match(r"^\d+월 .+째 주일$", t):
+            t = "주일 오전예배"
+    return t
+
+
+def build_calendar(shown, upcoming_all):
+    """공개 글 + 공개 예정(reviewed/scheduled) 글로 달력 페이지를 만든다."""
+    import calendar as _cal
+    items = {p["id"]: p for p in upcoming_all}
+    items.update({p["id"]: p for p in shown})
+    dated = [p for p in items.values() if p.get("service_date")]
+    if not dated:
+        return []
+    months = sorted({p["service_date"][:7] for p in dated})
+    first, last = months[0], months[-1]
+    ym_list = []
+    y, m = map(int, first.split("-"))
+    while f"{y}-{m:02d}" <= last:
+        ym_list.append(f"{y}-{m:02d}"); m += 1
+        if m == 13:
+            y, m = y + 1, 1
+    shown_ids = {p["id"] for p in shown}
+
+    def entry(p):
+        return {"label": cal_label(p), "title": p["title"], "url": p["url"] if p["id"] in shown_ids else None,
+                "pub": fmt_date(p["eff_publish"], False)[5:].replace(".", "/") if p["id"] not in shown_ids else "",
+                "color": p["color"], "cat": p["category"], "group": p.get("group") or ""}
+
+    out = []
+    for i, ym in enumerate(ym_list):
+        y, m = map(int, ym.split("-"))
+        monthly = sorted((p for p in dated if p["service_date"][:7] == ym and p["worship_type"] in MONTHLY_TYPES),
+                         key=lambda p: (p["worship_type"], p.get("group") or ""))
+        by_day = {}
+        for p in dated:
+            if p["service_date"][:7] == ym and p["worship_type"] not in MONTHLY_TYPES:
+                by_day.setdefault(p["service_date"], []).append(p)
+        weeks = []
+        for wk in _cal.Calendar(firstweekday=6).monthdatescalendar(y, m):
+            weeks.append([{"d": d.day, "iso": d.isoformat(), "in": d.month == m, "today": d == TODAY,
+                           "sun": d.weekday() == 6,
+                           "items": [entry(p) for p in sorted(by_day.get(d.isoformat(), []),
+                                                               key=lambda p: (p["category"] != "본당", p["id"]))]}
+                          for d in wk])
+        agenda = [(fmt_date(d), [entry(p) for p in sorted(by_day[d], key=lambda p: (p["category"] != "본당", p["id"]))])
+                  for d in sorted(by_day)]
+        out.append({"ym": ym, "y": y, "m": m, "weeks": weeks, "agenda": agenda,
+                    "monthly": [entry(p) for p in monthly],
+                    "prev": ym_list[i - 1] if i else None, "next": ym_list[i + 1] if i + 1 < len(ym_list) else None})
+    return out
+
+
 # 예배·상황 종류별 모음 페이지 /type/{key}/ — 상단 빠른 찾기에서 바로 들어간다
 TYPE_PAGES = [
     ("sunday", "주일예배", lambda p: p["category"] == "본당" and p["worship_type"].startswith("주일")),
@@ -357,6 +439,16 @@ def main():
         render("list.html", f"/type/{k}/", kind="type", key=k, title=f"{name} 기도문 모음",
                lead=TYPE_LEADS.get(k, f"{name} 기도문을 한곳에 모았습니다."), items=items)
 
+    # ---- 달력
+    scheduled = [p for p in all_prayers if p.get("status") in ("reviewed", "scheduled") and p["id"] not in pub_ids]
+    cal_months = build_calendar(shown, scheduled)
+    cur = TODAY.strftime("%Y-%m")
+    for cm in cal_months:
+        render("calendar.html", f"/calendar/{cm['ym']}/", cm=cm)
+    if cal_months:
+        pick = next((cm for cm in cal_months if cm["ym"] == cur), cal_months[0])
+        render("calendar.html", "/calendar/", cm=pick, canonical=f"{BASE}/calendar/{pick['ym']}/")
+
     # ---- 고정 페이지
     for md in sorted(PAGES.glob("*.md")):
         meta, body = md_page(md)
@@ -379,6 +471,7 @@ def main():
              if any(p["id"] in pub_ids for p in items)]
     urls += [(f"/group/{k}/", TODAY.isoformat(), "weekly") for k in GROUP_KEYS.values()
              if any(p["group_key"] == k for p in pub)]
+    urls += [(f"/calendar/{cm['ym']}/", TODAY.isoformat(), "weekly") for cm in cal_months]
     urls += [("/anytime/", TODAY.isoformat(), "weekly"), ("/about/", LAUNCH.isoformat(), "yearly"),
              ("/privacy/", LAUNCH.isoformat(), "yearly"), ("/contact/", LAUNCH.isoformat(), "yearly")]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
