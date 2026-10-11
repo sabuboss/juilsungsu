@@ -28,7 +28,7 @@ GROUP_CHARS = {
 MONTH_START_CHARS = (230, 420)
 
 # length_class -> 글자수 범위 (SPEC 7장)
-LENGTH_CHARS = {"3~4분": (850, 1080), "2분 이내": (270, 520), "1~2분": (270, 520)}
+LENGTH_CHARS = {"3~4분": (850, 1080), "2~3분": (540, 810), "2분 이내": (270, 520), "1~2분": (270, 520)}
 
 # 절기 허브 (SPEC 9.1). 캘린더의 season 태그를 이 key 로 묶는다.
 SEASON_NAMES = {
