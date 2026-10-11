@@ -29,6 +29,12 @@
   <a class="brand" href="/">{{ site.site_name }}</a>
   <nav><a href="/anytime/">상황별</a><a href="/search/">검색</a><a href="/about/">소개</a></nav>
 </div></header>
+{% set here = canonical|replace(site.base_url, '') %}
+<nav class="quick" aria-label="빠른 찾기"><div class="in">
+{% for label, links in quicknav if links %}
+  <div class="qrow"><span class="ql">{{ label }}</span><div class="qchips">{% for name, url in links %}<a href="{{ url }}"{% if url == here %} class="on" aria-current="page"{% endif %}>{{ name }}</a>{% endfor %}</div></div>
+{% endfor %}
+</div></nav>
 <main class="wrap">
 {% block body %}{% endblock %}
 </main>

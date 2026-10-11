@@ -153,6 +153,34 @@ def enrich(p):
     return p
 
 
+# 예배·상황 종류별 모음 페이지 /type/{key}/ — 상단 빠른 찾기에서 바로 들어간다
+TYPE_PAGES = [
+    ("sunday", "주일예배", lambda p: p["category"] == "본당" and p["worship_type"].startswith("주일")),
+    ("dawn-prayer", "특별새벽기도회", lambda p: p["worship_type"] == "특별새벽기도회"),
+    ("special-worship", "절기 특별예배", lambda p: p["category"] == "본당" and p["id"].endswith("-sp")),
+    ("wednesday", "수요예배", lambda p: p["worship_type"] == "수요예배"),
+    ("friday", "금요기도회", lambda p: p["worship_type"] == "금요기도회"),
+    ("funeral", "장례", lambda p: p["worship_type"] == "장례"),
+    ("wedding", "결혼", lambda p: p["worship_type"] == "결혼"),
+    ("dedication", "헌신예배", lambda p: p["worship_type"] == "헌신예배"),
+    ("church-event", "임직·창립", lambda p: p["worship_type"] == "교회행사"),
+    ("visit", "심방", lambda p: p["worship_type"] == "심방"),
+    ("home-worship", "가정예배", lambda p: p["worship_type"] == "가정예배"),
+    ("meeting", "회의", lambda p: p["worship_type"] == "회의"),
+]
+WORSHIP_TYPES = ["sunday", "dawn-prayer", "special-worship", "wednesday", "friday"]
+SITUATION_TYPES = ["funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
+TYPE_LEADS = {
+    "sunday": "주일 오전·오후(저녁)예배 대표기도문입니다. 실제 낭독 약 4분 분량입니다.",
+    "dawn-prayer": "특별새벽기도회 요일별(월~토) 대표기도문과 요일 무관 공통 기도문입니다. 날마다 공동기도제목을 모두 담았습니다.",
+    "special-worship": "성탄 전야·성탄절·송구영신·성금요일처럼 주일 외에 드리는 절기 특별예배 대표기도문입니다.",
+    "funeral": "임종·입관·발인·하관 예배에서 쓰는 1~2분 기도문입니다. 위로를 먼저 담았습니다.",
+    "wedding": "결혼예배 대표기도문입니다.",
+    "dedication": "남전도회·여전도회·권사회·안수집사회·청년부·교회학교 헌신예배 대표기도문입니다.",
+    "church-event": "임직예배, 교회 창립기념주일 등 교회 행사 대표기도문입니다.",
+}
+
+
 def breadcrumbs(p):
     crumbs = [("홈", "/")]
     if p["category"] == "상황별":
@@ -263,6 +291,23 @@ def main():
     DIST.mkdir()
     shutil.copytree(ROOT / "static", DIST / "static")
 
+    # ---- 상단 빠른 찾기 (공개 글이 있는 묶음만 칩으로 보여 준다)
+    seasons_present = []
+    for k in SEASON_KEYS:
+        n = sum(1 for p in shown if p["season_key"] == k)
+        if n:
+            seasons_present.append((k, SEASON_NAMES[k], n))
+    types_present = [(k, name, [p for p in shown if fn(p)]) for k, name, fn in TYPE_PAGES]
+    types_present = [(k, name, items) for k, name, items in types_present if items]
+    groups_present = [(name, k) for name, k in GROUP_KEYS.items() if any(p["group_key"] == k for p in shown)]
+    tnames = {k: name for k, name, _ in types_present}
+    env.globals["quicknav"] = [
+        ("예배", [(tnames[k], f"/type/{k}/") for k in WORSHIP_TYPES if k in tnames]),
+        ("절기", [(name, f"/season/{k}/") for k, name, _ in seasons_present]),
+        ("부서", [(name, f"/group/{k}/") for name, k in groups_present]),
+        ("상황", [(tnames[k], f"/type/{k}/") for k in SITUATION_TYPES if k in tnames]),
+    ]
+
     # ---- 상세 + 인쇄
     for p in shown:
         crumbs = breadcrumbs(p)
@@ -286,12 +331,7 @@ def main():
     this_month = TODAY.strftime("%Y-%m")
     month_groups = [p for p in shown if p["category"] == "소모임" and p["month"] in (this_month, next_sun[:7])]
     anytime = [p for p in shown if p["category"] == "상황별"]
-    seasons_present = []
-    for k in SEASON_KEYS:
-        n = sum(1 for p in shown if p["season_key"] == k)
-        if n:
-            seasons_present.append((k, SEASON_NAMES[k], n))
-    months = sorted({p["month"] for p in shown if p["month"]})
+    months =sorted({p["month"] for p in shown if p["month"]})
     render("home.html", "/", hero=hero, upcoming=upcoming, month_groups=month_groups[:12], anytime=anytime[:8],
            seasons=seasons_present, months=months, total=len(pub))
 
@@ -313,6 +353,9 @@ def main():
                lead=f"{name} 월례 모임과 절기 행사에 쓰는 2분 이내의 대표기도문입니다.", items=items)
     render("list.html", "/anytime/", kind="anytime", key="anytime", title="상황별 기도문",
            lead="장례·결혼·헌신예배·심방·회의 등 날짜와 상관없이 쓰는 기도문입니다.", items=anytime)
+    for k, name, items in types_present:
+        render("list.html", f"/type/{k}/", kind="type", key=k, title=f"{name} 기도문 모음",
+               lead=TYPE_LEADS.get(k, f"{name} 기도문을 한곳에 모았습니다."), items=items)
 
     # ---- 고정 페이지
     for md in sorted(PAGES.glob("*.md")):
@@ -332,6 +375,8 @@ def main():
     urls += [(p["url"], p["eff_publish"], "monthly") for p in pub]
     urls += [(f"/month/{m}/", TODAY.isoformat(), "weekly") for m in months]
     urls += [(f"/season/{k}/", TODAY.isoformat(), "weekly") for k, _, _ in seasons_present]
+    urls += [(f"/type/{k}/", TODAY.isoformat(), "weekly") for k, _, items in types_present
+             if any(p["id"] in pub_ids for p in items)]
     urls += [(f"/group/{k}/", TODAY.isoformat(), "weekly") for k in GROUP_KEYS.values()
              if any(p["group_key"] == k for p in pub)]
     urls += [("/anytime/", TODAY.isoformat(), "weekly"), ("/about/", LAUNCH.isoformat(), "yearly"),
