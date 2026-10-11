@@ -155,3 +155,4 @@ ins.adsbygoogle{margin:20px 0}
 .aday div{flex:1;min-width:0}
 .aday .ce{font-size:14px;padding:6px 8px;white-space:normal}
 @media (max-width:560px){.cal{display:none}.agenda{display:block}}
+.tblwrap{overflow-x:auto;margin:0 0 14px}.tblwrap .tbl{margin:0;min-width:520px}
