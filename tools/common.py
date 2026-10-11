@@ -24,6 +24,9 @@ GROUP_CHARS = {
     "church-school": (300, 450),
 }
 
+# 본당 대표기도: 실제 낭독 약 4분(분당 430자 기준)
+MAIN_CHARS = (1600, 1720)
+
 # 월초(한 달을 여는) 기도: 정기 월례회보다 짧게, 약 1분~1분 30초
 MONTH_START_CHARS = (230, 420)
 
@@ -86,6 +89,8 @@ def char_range(p):
     """기도문 한 편의 글자수 허용 범위 (부서 목표가 있으면 그것을 우선)."""
     if p.get("worship_type") == "월초 기도":
         return MONTH_START_CHARS
+    if p.get("category") == "본당" and p.get("length_class") == "3~4분":
+        return MAIN_CHARS
     gk = group_key(p.get("group"))
     if p.get("category") == "소모임" and gk in GROUP_CHARS:
         return GROUP_CHARS[gk]
