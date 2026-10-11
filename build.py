@@ -268,6 +268,7 @@ def build_calendar(shown, upcoming_all, planned=()):
 TYPE_PAGES = [
     ("sunday", "주일예배", lambda p: p["category"] == "본당" and p["worship_type"].startswith("주일")),
     ("dawn-prayer", "특별새벽기도회", lambda p: p["worship_type"] == "특별새벽기도회"),
+    ("church-year", "절기 대표기도", lambda p: p["worship_type"] == "절기 예배"),
     ("special-worship", "절기 특별예배", lambda p: p["category"] == "본당" and p["id"].endswith("-sp")),
     ("wednesday", "수요예배", lambda p: p["worship_type"] == "수요예배"),
     ("friday", "금요기도회", lambda p: p["worship_type"] == "금요기도회"),
@@ -280,11 +281,12 @@ TYPE_PAGES = [
     ("meeting", "회의", lambda p: p["worship_type"] == "회의"),
     ("committee", "위원회·봉사부서", lambda p: p["worship_type"] == "위원회·부서 모임"),
 ]
-WORSHIP_TYPES = ["sunday", "dawn-prayer", "special-worship", "wednesday", "friday"]
+WORSHIP_TYPES = ["sunday", "church-year", "dawn-prayer", "special-worship", "wednesday", "friday"]
 SITUATION_TYPES = ["committee", "funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
 TYPE_LEADS = {
     "sunday": "주일 오전·오후(저녁)예배 대표기도문입니다. 실제 낭독 약 4분 분량입니다.",
     "dawn-prayer": "특별새벽기도회 요일별(월~토) 대표기도문과 요일 무관 공통 기도문입니다. 날마다 공동기도제목을 모두 담았습니다.",
+    "church-year": "사순절·종려주일·성금요일·부활절·어린이주일·어버이주일·성령강림·맥추감사·삼일절·현충일·광복절·설·추석·신년·추수감사·성탄·송구영신 등 해마다 돌아오는 절기에 연도와 상관없이 그대로 쓸 수 있는 대표기도문입니다. 약 4분 분량입니다.",
     "special-worship": "성탄 전야·성탄절·송구영신·성금요일처럼 주일 외에 드리는 절기 특별예배 대표기도문입니다.",
     "funeral": "임종·입관·발인·하관 예배에서 쓰는 1~2분 기도문입니다. 위로를 먼저 담았습니다.",
     "wedding": "결혼예배 대표기도문입니다.",
