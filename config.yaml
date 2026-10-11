@@ -3,7 +3,7 @@ site_name: "주일성수"
 base_url: "https://juilsungsu.com"
 launch_date: "2026-10-11"         # 공개 시작일
 timezone: "Asia/Seoul"
-read_cpm: 270                     # 분당 낭독 글자수(공백 제외) — 실측 후 교정
+read_cpm: 430                     # 분당 낭독 글자수(공백 제외) — 2026-10-11 사용자 실측(870자≈2분)으로 교정
 adsense_client: ""                # 비어 있으면 광고 코드 미삽입
 cf_analytics_token: ""
 naver_site_verification: ""

@@ -48,7 +48,8 @@ def load_banned():
 
 
 def sentences(text):
-    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
+    # 단락 경계(부르는 말의 쉼표 뒤 줄바꿈)에서도 문장을 나눈다
+    return [s.strip() for s in re.split(r"(?<=[.!?,])\n|(?<=[.!?])\s+", text) if s.strip()]
 
 
 _NG = {}

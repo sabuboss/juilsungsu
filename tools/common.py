@@ -28,7 +28,7 @@ GROUP_CHARS = {
 MONTH_START_CHARS = (230, 420)
 
 # length_class -> 글자수 범위 (SPEC 7장)
-LENGTH_CHARS = {"3~4분": (850, 1080), "2~3분": (540, 810), "2분 이내": (270, 520), "1~2분": (270, 520)}
+LENGTH_CHARS = {"3~4분": (1300, 1720), "4분 안팎": (1600, 1900), "2~3분": (860, 1290), "2분 이내": (270, 520), "1~2분": (270, 520)}
 
 # 절기 허브 (SPEC 9.1). 캘린더의 season 태그를 이 key 로 묶는다.
 SEASON_NAMES = {
@@ -66,11 +66,11 @@ def chars_no_space(text):
     return len(re.sub(r"\s", "", text))
 
 
-def read_minutes(n, cpm=270):
+def read_minutes(n, cpm=430):
     return round(n / cpm, 1)
 
 
-def read_label(n, cpm=270):
+def read_label(n, cpm=430):
     """'약 3분 20초' — 10초 단위로 반올림."""
     sec = int(round(n / cpm * 60 / 10.0)) * 10
     m, s = divmod(sec, 60)
