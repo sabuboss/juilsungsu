@@ -191,6 +191,11 @@ def related(p, pub):
             out.append((label, q))
 
     if p.get("service_date"):
+        if p["category"] == "소모임" and p.get("group"):
+            # 같은 부서·같은 달의 월례회 / 정기총회 / 송년 모임을 먼저 보여 줘 상황에 맞게 고르게 한다
+            for q in pub:
+                if q.get("group") == p["group"] and q["month"] == p["month"]:
+                    add(q, f"같은 달 {p['group']} · {q['worship_type']}")
         for q in pub:
             if q["service_date"] == p["service_date"] and q["category"] == "본당":
                 add(q, "같은 날 다른 예배")
@@ -207,7 +212,11 @@ def related(p, pub):
         if nxt:
             add(min(nxt, key=lambda q: q["service_date"]), "다음 주일")
     else:
-        for q in [q for q in pub if q["category"] == "상황별" and q["id"] != p["id"]][:4]:
+        # 같은 묶음(예: 특별새벽기도회 다른 요일, 장례 다른 순서)을 먼저
+        same = [q for q in pub if q["category"] == "상황별" and q["worship_type"] == p["worship_type"]]
+        for q in sorted(same, key=lambda q: q["id"]):
+            add(q, f"같은 {p['worship_type']}")
+        for q in [q for q in pub if q["category"] == "상황별"][:4]:
             add(q, "다른 상황별 기도문")
     return out[:6]
 
