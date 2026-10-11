@@ -12,6 +12,7 @@
 {% if p.is_draft %}<div class="band">검수 대기 — 아직 공개되지 않은 초안입니다</div>{% endif %}
 <nav class="crumb">{% for name, url in crumbs %}{% if not loop.last %}<a href="{{ url }}">{{ name }}</a> › {% else %}<span>{{ name }}</span>{% endif %}{% endfor %}</nav>
 <h1>{{ p.title }}</h1>
+{% if p.occasion %}<p class="occasion"><b>이런 때에</b> {{ p.occasion }}</p>{% endif %}
 <div class="chips meta">
   {% if p.service_date %}<span class="chip">{{ p.date_label }}</span>{% endif %}
   <span class="chip">{{ p.worship_type }}</span>

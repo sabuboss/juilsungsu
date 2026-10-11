@@ -4,6 +4,7 @@
   {% if label %}<span class="lbl">{{ label }}</span>{% endif %}
   <span class="chips"><span class="chip {{ p.color }}">{{ p.season }}</span><span class="chip">{{ p.worship_type }}</span>{% if p.group %}<span class="chip">{{ p.group }}</span>{% endif %}</span>
   <b>{{ p.title }}</b>
+  {% if p.occasion %}<span class="occ">{{ p.occasion }}</span>{% endif %}
   <small>{{ p.date_label }} · {{ p.read_label }} · {{ p.stats.chars_no_space }}자{% if p.is_draft %} · 검수 대기{% endif %}</small>
 </a>
 {%- endmacro %}

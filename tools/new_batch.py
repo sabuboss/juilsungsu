@@ -72,7 +72,7 @@ def skeleton(r):
         "id": r["id"], "slug": slug_for(r), "status": "draft", "version": 1,
         "category": r["category"], "worship_type": r["worship_type"], "group": r["group"] or None,
         "service_date": r["service_date"] or None, "publish_date": r["publish_date"], "season": r["season"],
-        "length_class": length_class(r), "title": r["title"], "seo_title": r["seo_title"],
+        "length_class": length_class(r), "title": r["title"], "occasion": "", "seo_title": r["seo_title"],
         "seo_description": "", "tags": [], "context": "", "paragraphs": [], "tips": [],
         "customize": ["'담임목사님' → 교회에서 부르는 호칭(예: OOO 목사님)", "'우리 교회' → 교회 이름"],
         "stats": {"chars_no_space": 0, "chars_with_space": 0, "read_minutes": 0},

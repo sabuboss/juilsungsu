@@ -315,7 +315,7 @@ def main():
     # ---- 검색 인덱스 (공개 글만)
     idx = [{"id": p["id"], "t": p["title"], "u": p["url"], "d": p.get("service_date") or "", "c": p["category"],
             "g": p.get("group") or "", "s": p.get("season") or "", "w": p["worship_type"],
-            "tags": p.get("tags", []), "x": p["context"][:80]} for p in shown if p["id"] in pub_ids]
+            "tags": p.get("tags", []), "o": p.get("occasion", ""), "x": p["context"][:80]} for p in shown if p["id"] in pub_ids]
     (DIST / "search-index.json").write_text(json.dumps(idx, ensure_ascii=False), encoding="utf-8")
 
     # ---- sitemap / rss / robots / ads.txt / _headers  (공개 글만)

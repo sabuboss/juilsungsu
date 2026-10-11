@@ -41,6 +41,8 @@ h2{font-size:20px;font-weight:700;margin:36px 0 12px;letter-spacing:-0.01em}
 .chip.purple,.tchip.purple{background:var(--purple-soft);color:var(--purple)}
 .chip.gold,.tchip.gold{background:var(--gold-soft);color:var(--gold)}
 .chip.red,.tchip.red{background:var(--red-soft);color:var(--red)}
+.occasion{font-size:16px;color:var(--accent);margin:-4px 0 14px;line-height:1.6}
+.occasion b{font-weight:700;margin-right:6px}
 .meta{margin:0 0 18px}
 .tnav{display:flex;flex-wrap:wrap;gap:8px}
 .tchip{display:inline-block;font-size:14px;padding:8px 12px;border-radius:999px;background:var(--field);color:var(--ink);text-decoration:none}
@@ -63,6 +65,7 @@ h2{font-size:20px;font-weight:700;margin:36px 0 12px;letter-spacing:-0.01em}
 .card .lbl{display:block;font-size:13px;color:var(--accent);font-weight:600;margin-bottom:6px}
 .card .chips{margin-bottom:8px}
 .card b{display:block;font-size:17px;line-height:1.4;margin-bottom:6px}
+.card .occ{display:block;font-size:14px;color:var(--accent);margin:-2px 0 6px;line-height:1.5}
 .card small{display:block;font-size:13px;color:var(--muted)}
 .card.big{padding:18px 18px 16px}
 .card.big b{font-size:20px}

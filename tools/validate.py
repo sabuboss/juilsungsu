@@ -102,6 +102,8 @@ def check(p, cal, banned, all_prayers):
         W("tips 2개 이상 권장")
     if not p["tags"]:
         W("tags 비어 있음")
+    if not p.get("occasion", "").strip():
+        W("occasion(이런 때에) 비어 있음 — 월례회/송년 모임, 월초/중순 등 상황을 한 줄로")
 
     body = "\n".join(p["paragraphs"])
 

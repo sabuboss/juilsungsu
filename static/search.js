@@ -11,14 +11,14 @@
     return s;
   }
   function hay(p) {
-    return norm([p.t, p.d, p.c, p.g, p.s, p.w, p.x, (p.tags || []).join(" ")].join(" "));
+    return norm([p.t, p.o, p.d, p.c, p.g, p.s, p.w, p.x, (p.tags || []).join(" ")].join(" "));
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 
   function render(list) {
     out.innerHTML = list.slice(0, 40).map(function (p) {
       return '<a class="card" href="' + esc(p.u) + '"><span class="chips"><span class="chip">' + esc(p.s) + '</span><span class="chip">' + esc(p.w) + '</span>' +
-        (p.g ? '<span class="chip">' + esc(p.g) + '</span>' : '') + '</span><b>' + esc(p.t) + '</b><small>' + esc(p.d || "날짜 없음 · 상시") + '</small></a>';
+        (p.g ? '<span class="chip">' + esc(p.g) + '</span>' : '') + '</span><b>' + esc(p.t) + '</b>' + (p.o ? '<span class="occ">' + esc(p.o) + '</span>' : '') + '<small>' + esc(p.d || "날짜 없음 · 상시") + '</small></a>';
     }).join("");
     empty.hidden = list.length > 0;
   }
