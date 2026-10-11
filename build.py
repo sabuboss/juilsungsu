@@ -123,6 +123,14 @@ def is_public(p):
     return False
 
 
+# 날짜가 교회마다 다른 행사(성경학교·수련회·칸타타·발표회·총회·송년·교사 헌신·수험생): 달력 날짜 칸에 넣지 않는다
+UNFIXED_TYPES = ("절기 특별", "정기총회", "송년 모임")
+
+
+def is_unfixed(p):
+    return p.get("category") == "소모임" and p.get("worship_type") in UNFIXED_TYPES
+
+
 def enrich(p):
     """빌드용 파생 필드. stats 는 매번 재계산한다 (7장)."""
     body = "\n\n".join(p["paragraphs"])
@@ -148,6 +156,10 @@ def enrich(p):
         p["date_label"] = fmt_date(p["service_date"])
         if p["worship_type"] in ("월례 모임", "수요예배", "금요기도회"):
             p["date_label"] = fmt_month(p["month"]) + " 내내"
+        elif p["worship_type"] == "월초 기도":
+            p["date_label"] = fmt_month(p["month"]) + " 첫 주"
+        elif is_unfixed(p):
+            p["date_label"] = fmt_month(p["month"]) + " 중 · 날짜는 교회 일정대로"
     else:
         p["date_label"] = "날짜 없음 · 상시"
     return p
@@ -168,6 +180,8 @@ def cal_label(p):
         return f"{g} {'연습' if g == '성가대' else '예배'}"
     if wt in ("수요예배", "금요기도회"):
         return wt
+    if wt == "주일 오후·저녁예배":
+        return "오후·저녁예배"
     if wt == "정기총회":
         return f"{g} 총회"
     if wt == "송년 모임":
@@ -188,10 +202,24 @@ def cal_label(p):
     return t
 
 
-def build_calendar(shown, upcoming_all):
-    """공개 글 + 공개 예정(reviewed/scheduled) 글로 달력 페이지를 만든다."""
+def planned_rows(known_ids):
+    """calendar.csv 에는 있지만 아직 기도문(JSON)이 없는 예배 — 달력에 '준비 중'으로 보여 준다."""
+    out = []
+    for r in load_calendar().values():
+        if r["id"] in known_ids or not r["service_date"]:
+            continue
+        out.append({"id": r["id"], "title": r["title"], "category": r["category"], "worship_type": r["worship_type"],
+                    "group": r["group"] or None, "service_date": r["service_date"], "season": r["season"],
+                    "color": SEASON_COLORS.get(season_key(r["season"]), "green"), "eff_publish": r["publish_date"],
+                    "url": None, "planned": True})
+    return out
+
+
+def build_calendar(shown, upcoming_all, planned=()):
+    """공개 글 + 공개 예정(reviewed/scheduled) 글 + 캘린더상 준비 중 예배로 달력 페이지를 만든다."""
     import calendar as _cal
-    items = {p["id"]: p for p in upcoming_all}
+    items = {p["id"]: p for p in planned}
+    items.update({p["id"]: p for p in upcoming_all})
     items.update({p["id"]: p for p in shown})
     dated = [p for p in items.values() if p.get("service_date")]
     if not dated:
@@ -208,17 +236,18 @@ def build_calendar(shown, upcoming_all):
 
     def entry(p):
         return {"label": cal_label(p), "title": p["title"], "url": p["url"] if p["id"] in shown_ids else None,
-                "pub": fmt_date(p["eff_publish"], False)[5:].replace(".", "/") if p["id"] not in shown_ids else "",
+                "pub": ("준비 중" if p.get("planned") else fmt_date(p["eff_publish"], False)[5:].replace(".", "/") + " 공개")
+                       if p["id"] not in shown_ids else "",
                 "color": p["color"], "cat": p["category"], "group": p.get("group") or ""}
 
     out = []
     for i, ym in enumerate(ym_list):
         y, m = map(int, ym.split("-"))
-        monthly = sorted((p for p in dated if p["service_date"][:7] == ym and p["worship_type"] in MONTHLY_TYPES),
-                         key=lambda p: (p["worship_type"], p.get("group") or ""))
+        monthly = sorted((p for p in dated if p["service_date"][:7] == ym and (p["worship_type"] in MONTHLY_TYPES or is_unfixed(p))),
+                         key=lambda p: (is_unfixed(p), p["worship_type"], p.get("group") or ""))
         by_day = {}
         for p in dated:
-            if p["service_date"][:7] == ym and p["worship_type"] not in MONTHLY_TYPES:
+            if p["service_date"][:7] == ym and p["worship_type"] not in MONTHLY_TYPES and not is_unfixed(p):
                 by_day.setdefault(p["service_date"], []).append(p)
         weeks = []
         for wk in _cal.Calendar(firstweekday=6).monthdatescalendar(y, m):
@@ -441,7 +470,7 @@ def main():
 
     # ---- 달력
     scheduled = [p for p in all_prayers if p.get("status") in ("reviewed", "scheduled") and p["id"] not in pub_ids]
-    cal_months = build_calendar(shown, scheduled)
+    cal_months = build_calendar(shown, scheduled, planned_rows({p["id"] for p in all_prayers}))
     cur = TODAY.strftime("%Y-%m")
     for cm in cal_months:
         render("calendar.html", f"/calendar/{cm['ym']}/", cm=cm)

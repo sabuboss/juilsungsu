@@ -3,7 +3,7 @@
 {% block description %}{{ cm.y }}년 {{ cm.m }}월 주일·절기 예배와 소모임 대표기도문을 달력으로 봅니다. 날짜를 누르면 그날 쓰는 기도문으로 갑니다.{% endblock %}
 {% macro item(e) -%}
 {% if e.url %}<a class="ce {{ e.color }}{% if e.cat != '본당' %} sub{% endif %}" href="{{ e.url }}" title="{{ e.title }}">{{ e.label }}</a>
-{%- else %}<span class="ce soon" title="{{ e.title }} — {{ e.pub }} 공개">{{ e.label }} <i>{{ e.pub }} 공개</i></span>{% endif %}
+{%- else %}<span class="ce soon" title="{{ e.title }} — {{ e.pub }}">{{ e.label }} <i>{{ e.pub }}</i></span>{% endif %}
 {%- endmacro %}
 {% block body %}
 <nav class="crumb"><a href="/">홈</a> › <span>달력</span></nav>
@@ -12,7 +12,7 @@
   <h1>{{ cm.y }}년 {{ cm.m }}월</h1>
   {% if cm.next %}<a class="calnav" href="/calendar/{{ cm.next }}/" aria-label="다음 달">›</a>{% else %}<span class="calnav off">›</span>{% endif %}
 </div>
-<p class="lead">날짜를 누르면 그날 예배에 쓰는 대표기도문으로 갑니다. 흐린 글씨는 공개 예정입니다.</p>
+<p class="lead">날짜를 누르면 그날 예배에 쓰는 대표기도문으로 갑니다. 흐린 글씨는 공개 예정이거나 준비 중입니다. 총회·송년 모임·칸타타·수련회처럼 날짜가 교회마다 다른 행사는 아래 목록에 있습니다.</p>
 
 <table class="cal" aria-label="{{ cm.y }}년 {{ cm.m }}월 달력">
   <thead><tr>{% for w in ['주일','월','화','수','목','금','토'] %}<th{% if loop.first %} class="sun"{% endif %}>{{ w }}</th>{% endfor %}</tr></thead>
@@ -34,7 +34,7 @@
 
 {% if cm.monthly %}
 <section class="monthly">
-  <h2>이달 내내 쓰는 기도문 <span class="h2sub">월례회 · 월초 기도 · 부서 예배 · 수요 · 금요</span></h2>
+  <h2>이달 내내 쓰는 기도문 <span class="h2sub">월례회 · 월초 · 부서 예배 · 수요 · 금요 · 날짜가 교회마다 다른 행사(총회·송년·칸타타·발표회·수련회 등)</span></h2>
   <div class="mlist">{% for e in cm.monthly %}{{ item(e) }}{% endfor %}</div>
 </section>
 {% endif %}
