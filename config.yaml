@@ -6,6 +6,6 @@ timezone: "Asia/Seoul"
 read_cpm: 430                     # 분당 낭독 글자수(공백 제외) — 2026-10-11 사용자 실측(870자≈2분)으로 교정
 adsense_client: "ca-pub-3199321666541334"  # 비어 있으면 광고 코드 미삽입 (2026-10-11 등록)
 cf_analytics_token: ""
-naver_site_verification: ""
+naver_site_verification: "2bc66a9cbdf13896f062de6bb639125237ae49c7"
 google_site_verification: "IKu4D-2mQsZgLAbPDKtBwNfiWAmLn4Jcp2plG-sCSGo"
 author: "sabuboss"
