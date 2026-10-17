@@ -29,7 +29,7 @@
 <div class="toolbar" id="toolbar">
   <button type="button" id="btn-copy">전체 복사</button>
   <a class="btn" href="{{ p.print_url }}" target="_blank" rel="noopener">인쇄(강단용)</a>
-  <button type="button" id="btn-share" data-url="{{ p.abs_url }}" data-title="{{ p.title }}">공유</button>
+  <button type="button" id="btn-share" data-url="{{ p.abs_url }}" data-title="{{ p.title }}">카톡·문자로 보내기</button>
   <span class="fs"><button type="button" data-fs="-" aria-label="글씨 작게">가−</button><button type="button" data-fs="+" aria-label="글씨 크게">가+</button></span>
 </div>
 
@@ -37,6 +37,7 @@
 {% for para in p.paragraphs %}<p>{{ para }}</p>
 {% endfor %}
 </article>
+<p class="pass-on">다음 대표기도 차례가 돌아오는 분이 계신가요? 위의 <b>카톡·문자로 보내기</b>로 이 기도문을 전해 주세요.</p>
 
 <section class="box">
   <h2>바꿔 쓰는 곳</h2>

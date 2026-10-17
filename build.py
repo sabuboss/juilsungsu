@@ -279,10 +279,12 @@ TYPE_PAGES = [
     ("visit", "심방", lambda p: p["worship_type"] == "심방"),
     ("home-worship", "가정예배", lambda p: p["worship_type"] == "가정예배"),
     ("meeting", "회의", lambda p: p["worship_type"] == "회의"),
+    ("year-end", "연말 총회·송년", lambda p: p["worship_type"] in ("연말 총회·송년", "정기총회", "송년 모임")
+        or p["id"] in ("anytime-21", "anytime-22", "anytime-23")),
     ("committee", "위원회·봉사부서", lambda p: p["worship_type"] == "위원회·부서 모임"),
 ]
 WORSHIP_TYPES = ["sunday", "church-year", "dawn-prayer", "special-worship", "wednesday", "friday"]
-SITUATION_TYPES = ["committee", "funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
+SITUATION_TYPES = ["year-end", "committee", "funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
 TYPE_LEADS = {
     "sunday": "주일 오전·오후(저녁)예배 대표기도문입니다. 실제 낭독 약 4분 분량입니다.",
     "dawn-prayer": "특별새벽기도회 요일별(월~토) 대표기도문과 요일 무관 공통 기도문입니다. 날마다 공동기도제목을 모두 담았습니다.",
@@ -292,6 +294,7 @@ TYPE_LEADS = {
     "wedding": "결혼예배 대표기도문입니다.",
     "dedication": "남전도회·여전도회·권사회·안수집사회·청년부·교회학교 헌신예배 대표기도문입니다.",
     "church-event": "임직예배, 교회 창립기념주일 등 교회 행사 대표기도문입니다.",
+    "year-end": "연말에 몰리는 각 기관 정기총회, 제직회·공동의회·당회, 예결산 회의, 임원 이·취임, 송년 모임과 송년의 밤에 쓰는 기도문입니다. 연도와 상관없이 쓰는 기도문과, 그해 날짜에 맞춘 부서별 총회·송년 기도문을 함께 모았습니다.",
     "committee": "재정위원회·새가족부·헌금계수부·선교위원회·차량부·식당봉사부·의료선교부·교회카페 등 위원회와 봉사부서 38곳의 모임을 시작할 때 드리는 개회 기도문입니다.",
 }
 
