@@ -158,3 +158,4 @@ ins.adsbygoogle{margin:20px 0}
 .tblwrap{overflow-x:auto;margin:0 0 14px}.tblwrap .tbl{margin:0;min-width:520px}
 @media (max-width:420px){.top nav a{margin-left:10px;font-size:14px}}
 .page sup{font-size:11px;line-height:0}.page sup a{text-decoration:none;padding:0 1px}.page .refs{font-size:14px;padding-left:22px}.page .refs li{margin:0 0 8px}.page .refs li:target{background:var(--field);border-radius:6px}
+.pass-on{margin:18px 0 0;padding:12px 14px;background:var(--field);border-radius:10px;font-size:14px;color:var(--muted)}
