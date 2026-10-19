@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://juilsungsu.com/</loc><lastmod>2026-10-18</lastmod><changefreq>daily</changefreq></url>
+  <url><loc>https://juilsungsu.com/</loc><lastmod>2026-10-19</lastmod><changefreq>daily</changefreq></url>
   <url><loc>https://juilsungsu.com/p/anytime/funeral-imjong/</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq></url>
   <url><loc>https://juilsungsu.com/p/anytime/wedding/</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq></url>
   <url><loc>https://juilsungsu.com/p/anytime/dedication-namjeondo/</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq></url>
@@ -126,74 +126,75 @@
   <url><loc>https://juilsungsu.com/p/2026-11-01-sunday-morning/</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq></url>
   <url><loc>https://juilsungsu.com/p/2026-11-01-sunday-evening/</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq></url>
   <url><loc>https://juilsungsu.com/p/2026-11-08-sunday-morning/</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://juilsungsu.com/p/2026-11-08-sunday-evening/</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq></url>
   <url><loc>https://juilsungsu.com/p/2026-11-15-thanksgiving-sunday/</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq></url>
   <url><loc>https://juilsungsu.com/p/2026-11-29-advent-1/</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://juilsungsu.com/month/2026-10/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/month/2026-11/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/thanksgiving/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/advent/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/christmas/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/yearend/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/newyear/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/lent/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/easter/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/family/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/pentecost/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/harvest/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/nation/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/holiday/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/season/reformation/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/sunday/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/dawn-prayer/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/church-year/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/wednesday/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/friday/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/funeral/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/wedding/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/dedication/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/church-event/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/meeting/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/year-end/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/type/committee/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/gwonsa/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/namjeondo/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/anripjipsa/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/choir/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/youngadult/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/youth/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/elementary/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/kinder/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/group/infant/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2026-10/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2026-11/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2026-12/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-01/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-02/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-03/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-04/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-05/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-06/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-07/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-08/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-09/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-10/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-11/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2027-12/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-01/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-02/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-03/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-04/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-05/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-06/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-07/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-08/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-09/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-10/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-11/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/calendar/2028-12/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
-  <url><loc>https://juilsungsu.com/anytime/</loc><lastmod>2026-10-18</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/month/2026-10/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/month/2026-11/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/thanksgiving/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/advent/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/christmas/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/yearend/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/newyear/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/lent/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/easter/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/family/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/pentecost/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/harvest/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/nation/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/holiday/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/season/reformation/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/sunday/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/dawn-prayer/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/church-year/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/wednesday/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/friday/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/funeral/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/wedding/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/dedication/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/church-event/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/meeting/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/year-end/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/type/committee/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/gwonsa/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/namjeondo/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/anripjipsa/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/choir/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/youngadult/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/youth/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/elementary/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/kinder/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/group/infant/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2026-10/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2026-11/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2026-12/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-01/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-02/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-03/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-04/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-05/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-06/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-07/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-08/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-09/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-10/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-11/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2027-12/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-01/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-02/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-03/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-04/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-05/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-06/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-07/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-08/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-09/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-10/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-11/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/calendar/2028-12/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
+  <url><loc>https://juilsungsu.com/anytime/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq></url>
   <url><loc>https://juilsungsu.com/about/</loc><lastmod>2026-10-11</lastmod><changefreq>yearly</changefreq></url>
-  <url><loc>https://juilsungsu.com/guide/</loc><lastmod>2026-10-18</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://juilsungsu.com/guide/</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq></url>
   <url><loc>https://juilsungsu.com/privacy/</loc><lastmod>2026-10-11</lastmod><changefreq>yearly</changefreq></url>
   <url><loc>https://juilsungsu.com/contact/</loc><lastmod>2026-10-11</lastmod><changefreq>yearly</changefreq></url>
 </urlset>
