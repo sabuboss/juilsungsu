@@ -159,3 +159,7 @@ ins.adsbygoogle{margin:20px 0}
 @media (max-width:420px){.top nav a{margin-left:10px;font-size:14px}}
 .page sup{font-size:11px;line-height:0}.page sup a{text-decoration:none;padding:0 1px}.page .refs{font-size:14px;padding-left:22px}.page .refs li{margin:0 0 8px}.page .refs li:target{background:var(--field);border-radius:6px}
 .pass-on{margin:18px 0 0;padding:12px 14px;background:var(--field);border-radius:10px;font-size:14px;color:var(--muted)}
+.partner{margin:18px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.partner b{flex-basis:100%;font-size:15px}
+.partner a{white-space:nowrap}
+.partner small{flex-basis:100%;color:var(--muted);font-size:12px}
