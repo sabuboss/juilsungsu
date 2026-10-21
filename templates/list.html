@@ -6,6 +6,7 @@
 <nav class="crumb"><a href="/">홈</a> › <span>{{ title }}</span></nav>
 <h1>{{ title }}</h1>
 <p class="lead">{{ lead }}</p>
+{% if box %}{{ box|safe }}{% endif %}
 {% if kind == "group" %}
 <p class="muted">교단마다 이름이 다릅니다 (장립집사회=안수집사회, 남전도회=남선교회, 구역=속회·목장). 같은 모임이면 그대로 쓰시면 됩니다.</p>
 {% endif %}
