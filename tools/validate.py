@@ -18,6 +18,7 @@ from common import PRAYERS, ROOT, load_calendar, chars_no_space, char_range
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 LAUNCH = str(CFG.get("launch_date", ""))
 TOLERANCE = 0.03  # 분량 범위를 3% 벗어난 것까지는 경고로만
+DAILY_TYPES = ("오늘의 수험생 기도",)  # 날마다 전날 공개하는 시리즈 — 14일 전 공개 규칙 제외
 
 REQUIRED = {
     "id": str, "slug": str, "status": str, "version": int, "category": str, "worship_type": str,
@@ -129,7 +130,7 @@ def check(p, cal, banned, all_prayers):
             E(f"분량 {n}자 — 목표 {lo}~{hi}자")
 
     # --- 발행일
-    if p.get("service_date"):
+    if p.get("service_date") and p.get("worship_type") not in DAILY_TYPES:
         gap = (dt.date.fromisoformat(p["service_date"]) - dt.date.fromisoformat(p["publish_date"])).days
         # 첫 공개(launch_date) 묶음은 발행일을 더 앞당길 수 없으므로 예외
         if gap < 14 and p["publish_date"] > LAUNCH:

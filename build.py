@@ -192,6 +192,8 @@ def cal_label(p):
         return f"{g} {'연습' if g == '성가대' else '예배'}"
     if wt in ("수요예배", "금요기도회"):
         return wt
+    if wt == "오늘의 수험생 기도":
+        return re.sub(r" 오늘의 수험생 기도.*$", " 기도", p["title"])
     if wt == "주일 오후·저녁예배":
         return "오후·저녁예배"
     if wt == "정기총회":
@@ -291,13 +293,14 @@ TYPE_PAGES = [
     ("visit", "심방", lambda p: p["worship_type"] == "심방"),
     ("home-worship", "가정예배", lambda p: p["worship_type"] == "가정예배"),
     ("meeting", "회의", lambda p: p["worship_type"] == "회의"),
-    ("exam", "수험생·시험", is_exam),
+    ("exam", "수험생·시험", lambda p: is_exam(p) and p["worship_type"] != "오늘의 수험생 기도"),
+    ("suneung-daily", "수능 D-day 오늘의 기도", lambda p: p["worship_type"] == "오늘의 수험생 기도"),
     ("year-end", "연말 총회·송년", lambda p: p["worship_type"] in ("연말 총회·송년", "정기총회", "송년 모임")
         or p["id"] in ("anytime-21", "anytime-22", "anytime-23")),
     ("committee", "위원회·봉사부서", lambda p: p["worship_type"] == "위원회·부서 모임"),
 ]
 WORSHIP_TYPES = ["sunday", "church-year", "dawn-prayer", "special-worship", "wednesday", "friday"]
-SITUATION_TYPES = ["year-end", "exam", "committee", "funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
+SITUATION_TYPES = ["year-end", "exam", "suneung-daily", "committee", "funeral", "wedding", "dedication", "church-event", "visit", "home-worship", "meeting"]
 TYPE_LEADS = {
     "sunday": "주일 오전·오후(저녁)예배 대표기도문입니다. 실제 낭독 약 4분 분량입니다.",
     "dawn-prayer": "특별새벽기도회 요일별(월~토) 대표기도문과 요일 무관 공통 기도문입니다. 날마다 공동기도제목을 모두 담았습니다.",
@@ -307,6 +310,7 @@ TYPE_LEADS = {
     "wedding": "결혼예배 대표기도문입니다.",
     "dedication": "남전도회·여전도회·권사회·안수집사회·청년부·교회학교 헌신예배 대표기도문입니다.",
     "church-event": "임직예배, 교회 창립기념주일 등 교회 행사 대표기도문입니다.",
+    "suneung-daily": "수능 날까지 하루 한 편씩, 부모가 자녀를 위해 또는 수험생이 직접 드리는 1분 기도입니다. 매일 전날 오전에 다음 날 기도가 올라옵니다. 교회·학부모 단톡방에 그날의 링크를 보내 함께 기도해 보세요.",
     "exam": "수능을 앞둔 주일 예배의 수험생 기도, 수능 전날 부모의 기도, 시험 날 아침 수험생의 기도, 수능 당일 중보기도회, 시험을 마친 뒤의 기도, 취업·공무원·자격증 시험을 앞둔 이를 위한 기도를 모았습니다.",
     "year-end": "연말에 몰리는 각 기관 정기총회, 제직회·공동의회·당회, 예결산 회의, 임원 이·취임, 송년 모임과 송년의 밤에 쓰는 기도문입니다. 연도와 상관없이 쓰는 기도문과, 그해 날짜에 맞춘 부서별 총회·송년 기도문을 함께 모았습니다.",
     "committee": "재정위원회·새가족부·헌금계수부·선교위원회·차량부·식당봉사부·의료선교부·교회카페 등 위원회와 봉사부서 38곳의 모임을 시작할 때 드리는 개회 기도문입니다.",
@@ -488,7 +492,7 @@ def main():
     for k, name, items in types_present:
         render("list.html", f"/type/{k}/", kind="type", key=k, title=f"{name} 기도문 모음",
                lead=TYPE_LEADS.get(k, f"{name} 기도문을 한곳에 모았습니다."), items=items,
-               box=EXAM_BOX if k == "exam" else "")
+               box=EXAM_BOX if k in ("exam", "suneung-daily") else "")
 
     # ---- 달력
     scheduled = [p for p in all_prayers if p.get("status") in ("reviewed", "scheduled") and p["id"] not in pub_ids]
