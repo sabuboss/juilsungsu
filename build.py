@@ -547,6 +547,16 @@ def main():
     rss.append("</channel></rss>")
     (DIST / "rss.xml").write_text("\n".join(rss), encoding="utf-8")
 
+    if cfg.get("indexnow_key"):
+        (DIST / f"{cfg['indexnow_key']}.txt").write_text(cfg["indexnow_key"], encoding="utf-8")
+    # AI 검색(ChatGPT·Copilot·Perplexity 등)이 사이트 구조를 빨리 이해하도록 안내 파일
+    hubs = [("이번 주일 대표기도문", "/"), ("달력", "/calendar/"), ("상황별 기도문", "/anytime/"), ("작성 가이드", "/guide/")]
+    hubs += [(f"{name} 기도문 모음", f"/type/{k}/") for k, name, items in types_present if any(p["id"] in pub_ids for p in items)]
+    llms = [f"# {cfg['site_name']}", "",
+            "> 한국 개신교 교회의 대표기도문을 무료로 제공하는 사이트. 주일·수요·금요예배, 절기, 권사회·남전도회 등 부서 모임, "
+            "장례·결혼·헌신예배, 연말 총회, 수험생 기도문을 예배 약 3주 전에 공개한다. 모든 기도문은 직접 작성했고 복사·인쇄할 수 있다.", "",
+            "## 주요 페이지"] + [f"- [{t}]({BASE}{u})" for t, u in hubs] + ["", f"사이트맵: {BASE}/sitemap.xml"]
+    (DIST / "llms.txt").write_text("\n".join(llms) + "\n", encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /search/\nSitemap: {BASE}/sitemap.xml\n",
                                      encoding="utf-8")
     if cfg.get("adsense_client"):

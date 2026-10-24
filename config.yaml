@@ -9,3 +9,4 @@ cf_analytics_token: ""
 naver_site_verification: "2bc66a9cbdf13896f062de6bb639125237ae49c7"
 google_site_verification: "IKu4D-2mQsZgLAbPDKtBwNfiWAmLn4Jcp2plG-sCSGo"
 author: "sabuboss"
+indexnow_key: "424642ab2bf5522e03924faba88fe989"   # IndexNow(빙·네이버 등 빠른 수집 알림) 키. dist/{키}.txt 로 공개

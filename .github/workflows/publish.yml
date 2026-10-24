@@ -26,3 +26,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: dist
+      - name: 새 글을 검색엔진에 알림 (IndexNow — 빙·네이버 등)
+        if: success()
+        continue-on-error: true
+        run: sleep 90 && TZ=Asia/Seoul python tools/indexnow.py --since 1
