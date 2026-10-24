@@ -1,0 +1,24 @@
+# 주일성수
+
+> 한국 개신교 교회의 대표기도문을 무료로 제공하는 사이트. 주일·수요·금요예배, 절기, 권사회·남전도회 등 부서 모임, 장례·결혼·헌신예배, 연말 총회, 수험생 기도문을 예배 약 3주 전에 공개한다. 모든 기도문은 직접 작성했고 복사·인쇄할 수 있다.
+
+## 주요 페이지
+- [이번 주일 대표기도문](https://juilsungsu.com/)
+- [달력](https://juilsungsu.com/calendar/)
+- [상황별 기도문](https://juilsungsu.com/anytime/)
+- [작성 가이드](https://juilsungsu.com/guide/)
+- [주일예배 기도문 모음](https://juilsungsu.com/type/sunday/)
+- [특별새벽기도회 기도문 모음](https://juilsungsu.com/type/dawn-prayer/)
+- [절기 대표기도 기도문 모음](https://juilsungsu.com/type/church-year/)
+- [수요예배 기도문 모음](https://juilsungsu.com/type/wednesday/)
+- [금요기도회 기도문 모음](https://juilsungsu.com/type/friday/)
+- [장례 기도문 모음](https://juilsungsu.com/type/funeral/)
+- [결혼 기도문 모음](https://juilsungsu.com/type/wedding/)
+- [헌신예배 기도문 모음](https://juilsungsu.com/type/dedication/)
+- [임직·창립 기도문 모음](https://juilsungsu.com/type/church-event/)
+- [회의 기도문 모음](https://juilsungsu.com/type/meeting/)
+- [수험생·시험 기도문 모음](https://juilsungsu.com/type/exam/)
+- [연말 총회·송년 기도문 모음](https://juilsungsu.com/type/year-end/)
+- [위원회·봉사부서 기도문 모음](https://juilsungsu.com/type/committee/)
+
+사이트맵: https://juilsungsu.com/sitemap.xml
