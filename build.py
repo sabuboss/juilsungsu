@@ -280,7 +280,8 @@ def build_calendar(shown, upcoming_all, planned=()):
 
 # 예배·상황 종류별 모음 페이지 /type/{key}/ — 상단 빠른 찾기에서 바로 들어간다
 TYPE_PAGES = [
-    ("sunday", "주일예배", lambda p: p["category"] == "본당" and p["worship_type"].startswith("주일")),
+    ("sunday", "주일예배", lambda p: p["worship_type"].startswith("주일")
+        and (p["category"] == "본당" or p["id"] == "anytime-113")),
     ("dawn-prayer", "특별새벽기도회", lambda p: p["worship_type"] == "특별새벽기도회"),
     ("church-year", "절기 대표기도", lambda p: p["worship_type"] == "절기 예배"),
     ("special-worship", "절기 특별예배", lambda p: p["category"] == "본당" and p["id"].endswith("-sp")),
