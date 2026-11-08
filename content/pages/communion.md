@@ -2,7 +2,7 @@ title: 떡과 잔 앞에서 — 그림으로 읽는 성찬
 description: 성찬의 의미(기념·언약·교제·소망)와 성찬 앞에 선 성도의 자세, 성찬 전에 드리는 기도와 성찬 후 감사 기도를 수채화 그림과 함께 담았습니다.
 updated: 2026-11-08
 ---
-<figure class="pic"><img src="/static/img/communion/communion-1.jpg" alt="비 그친 주일 아침, 예배당으로 향하는 젖은 거리를 그린 수채화" width="1400" height="933" loading="eager"><figcaption>비 그친 주일 아침, 예배당으로 향하는 길</figcaption></figure>
+<figure class="pic"><img src="/static/img/communion/communion-1.jpg" alt="성찬상이 준비된 주일 아침 예배당에 성도들이 앉아 있는 모습을 그린 수채화" width="1400" height="933" loading="eager"><figcaption>성찬상이 준비된 주일 아침 예배당</figcaption></figure>
 
 <p>성찬 주일 아침, 예배당 앞자리에 하얀 보로 덮인 상이 놓여 있습니다. 그 아래에는 떡과 잔이 있습니다. 해마다 몇 번씩 보는 장면이지만, 그 상 앞에 설 때마다 새로 묻게 됩니다. 이 작은 떡 한 조각과 잔 한 모금은, 오늘 나에게 무엇을 말하고 있을까요.</p>
 
@@ -50,7 +50,7 @@ updated: 2026-11-08
 
 <h2>4. 성찬 후에 드리는 감사 기도</h2>
 
-<figure class="pic"><img src="/static/img/communion/communion-6.jpg" alt="예배를 마치고 햇빛이 비치는 젖은 거리로 나서는 사람들을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>예배를 마치고 빛나는 거리로 나서는 사람들</figcaption></figure>
+<figure class="pic"><img src="/static/img/communion/communion-6.jpg" alt="예배를 마치고 활짝 열린 교회 문을 나서 햇살 가득한 가을 마당으로 걸어 나가는 성도들을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>예배를 마치고 햇살 가득한 세상으로 나서는 성도들</figcaption></figure>
 
 <div class="pray">
 <p><b>생명의 떡이 되신 주님,</b></p>
