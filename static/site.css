@@ -163,3 +163,8 @@ ins.adsbygoogle{margin:20px 0}
 .partner b{flex-basis:100%;font-size:15px}
 .partner a{white-space:nowrap}
 .partner small{flex-basis:100%;color:var(--muted);font-size:12px}
+.page .pic{margin:22px 0}
+.page .pic img{width:100%;height:auto;border-radius:10px;display:block}
+.page .pic figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.page .pray{background:var(--field);border-radius:12px;padding:16px 18px;margin:0 0 14px}
+.page .pray p{margin:0 0 10px;font-size:17px;line-height:1.9}
