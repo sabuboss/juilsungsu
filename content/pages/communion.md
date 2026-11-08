@@ -1,5 +1,5 @@
-title: 떡과 잔 앞에서 — 그림으로 읽는 성찬
-description: 성찬의 의미(기념·언약·교제·소망)와 성찬 앞에 선 성도의 자세, 성찬 전에 드리는 기도와 성찬 후 감사 기도를 수채화 그림과 함께 담았습니다.
+title: 성찬식의 의미와 성찬 기도문 — 떡과 잔 앞에서
+description: 성찬식의 의미(기념·언약·교제·소망)와 성찬에 참여하는 성도의 자세, 성찬 전에 드리는 기도문과 성찬 후 감사 기도문을 수채화 그림과 함께 정리했습니다.
 updated: 2026-11-08
 ---
 <figure class="pic"><img src="/static/img/communion/communion-1-v2.jpg" alt="성찬상이 준비된 주일 아침 예배당에 성도들이 앉아 있는 모습을 그린 수채화" width="1400" height="933" loading="eager"><figcaption>성찬상이 준비된 주일 아침 예배당</figcaption></figure>
