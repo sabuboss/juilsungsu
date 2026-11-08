@@ -8,7 +8,7 @@ updated: 2026-11-08
 
 <h2>1. 추수감사절은 무엇인가</h2>
 
-<figure class="pic"><img src="/static/img/thanksgiving/thanks-2.jpg" alt="나뭇가지로 엮은 초막 앞에 등불을 켜고 둘러앉은 옛 이스라엘 가족을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>초막을 짓고 광야의 날들을 기억하던 이스라엘</figcaption></figure>
+<figure class="pic"><img src="/static/img/thanksgiving/thanks-2-v2.jpg" alt="나뭇가지로 엮은 초막 앞에 등불을 켜고 둘러앉은 옛 이스라엘 가족을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>초막을 짓고 광야의 날들을 기억하던 이스라엘</figcaption></figure>
 
 <p><b>성경의 감사 절기에서 시작합니다.</b> 하나님은 이스라엘에게 한 해의 소출을 거두어들인 뒤 일곱 날 동안 초막에 머물며 즐거워하라고 하셨습니다(레위기 23:39~43, 신명기 16:13~15). 초막절, 또는 수장절이라고 부르는 이 절기는 두 가지를 함께 기억하게 했습니다. 하나는 올해 주신 열매이고, 다른 하나는 집도 밭도 없던 광야 사십 년 동안 매일 먹이시고 입히신 은혜입니다.</p>
 
@@ -22,7 +22,7 @@ updated: 2026-11-08
 
 <h2>2. 감사하는 성도의 자세</h2>
 
-<figure class="pic"><img src="/static/img/thanksgiving/thanks-4.jpg" alt="따뜻한 등불 아래 식탁에 둘러앉아 손을 모으고 감사 기도하는 가족을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>식탁에 둘러앉아 감사를 나누는 가족</figcaption></figure>
+<figure class="pic"><img src="/static/img/thanksgiving/thanks-4-v2.jpg" alt="따뜻한 등불 아래 식탁에 둘러앉아 손을 모으고 감사 기도하는 가족을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>식탁에 둘러앉아 감사를 나누는 가족</figcaption></figure>
 
 <ul>
 <li><b>헤아립니다.</b> 막연히 "감사합니다"보다, 올해 받은 은혜를 하나씩 적어 봅니다. 열 가지를 넘기면 감사의 목소리가 달라집니다.</li>
@@ -45,7 +45,7 @@ updated: 2026-11-08
 
 <h2>4. 가정에서 드리는 추수감사 기도</h2>
 
-<figure class="pic"><img src="/static/img/thanksgiving/thanks-6.jpg" alt="쌀 포대와 김치통을 이웃의 집 앞에 전하는 사람들을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>감사가 이웃에게로 흘러가는 길</figcaption></figure>
+<figure class="pic"><img src="/static/img/thanksgiving/thanks-6-v2.jpg" alt="쌀 포대와 김치통을 이웃의 집 앞에 전하는 사람들을 그린 수채화" width="1400" height="933" loading="lazy"><figcaption>감사가 이웃에게로 흘러가는 길</figcaption></figure>
 
 <div class="pray">
 <p><b>날마다 저희 식탁을 채우시는 하나님,</b></p>
