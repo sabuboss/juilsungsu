@@ -528,7 +528,7 @@ def main():
     urls += [(f"/group/{k}/", TODAY.isoformat(), "weekly") for k in GROUP_KEYS.values()
              if any(p["group_key"] == k for p in pub)]
     urls += [(f"/calendar/{cm['ym']}/", TODAY.isoformat(), "weekly") for cm in cal_months]
-    urls += [("/anytime/", TODAY.isoformat(), "weekly"), ("/about/", LAUNCH.isoformat(), "yearly"), ("/guide/", TODAY.isoformat(), "monthly"),
+    urls += [("/anytime/", TODAY.isoformat(), "weekly"), ("/about/", LAUNCH.isoformat(), "yearly"), ("/guide/", TODAY.isoformat(), "monthly"), ("/communion/", "2026-11-08", "monthly"),
              ("/privacy/", LAUNCH.isoformat(), "yearly"), ("/contact/", LAUNCH.isoformat(), "yearly")]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, lm, cf in urls:
