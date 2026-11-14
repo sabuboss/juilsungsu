@@ -142,8 +142,32 @@ def is_exam(p):
     return p.get("worship_type") == "수험생·시험" or "수험생" in p.get("title", "")
 
 
+def dated_seo_title(p):
+    """날짜가 정해진 본당 예배(main-YYYYMMDD-*)는 검색 제목에 날짜를 넣는다.
+    '2026년 추수감사주일 날짜' 처럼 날짜를 찾는 검색에서 결과 제목만 보고도 클릭하게 한다.
+    예) 2026년 추수감사주일 대표기도문 → 2026년 추수감사주일(11월 15일) 대표기도문
+        2026년 10월 셋째 주일 대표기도문 → 2026년 10월 셋째 주일(18일) 대표기도문"""
+    t, sd = p["seo_title"], p.get("service_date") or ""
+    if not re.match(r"main-\d{8}-", p["id"]) or not sd:
+        return t
+    m, d = int(sd[5:7]), int(sd[8:10])
+    # 끝쪽 '| 11월 15일 주일 오전예배' 의 날짜는 검색 결과에서 잘리기 쉬우니 앞으로 옮긴다
+    t = re.sub(rf"\|\s*{m}월\s*{d}일\s*", "| ", t)
+    if re.search(rf"{m}월\s*{d}일", t):
+        return t
+    i = t.find(" 오후")
+    if i < 0:
+        i = t.find(" 대표기도문")
+    if i < 0:
+        return t
+    head = t[:i]
+    tag = f"({d}일)" if f"{m}월" in head else f"({m}월 {d}일)"
+    return head + tag + t[i:]
+
+
 def enrich(p):
     """빌드용 파생 필드. stats 는 매번 재계산한다 (7장)."""
+    p["seo_title"] = dated_seo_title(p)
     p["exam_box"] = EXAM_BOX if is_exam(p) else ""
     body = "\n\n".join(p["paragraphs"])
     n = chars_no_space(body)
