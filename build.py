@@ -138,6 +138,11 @@ EXAM_BOX = ('<aside class="partner"><b>수능·면접 일정도 함께 챙기세
             '<small>같은 운영자가 만든 대입 면접 정보 사이트 면접각(mjgak.com)으로 연결됩니다.</small></aside>')
 
 
+YEAREND_BOX = ('<aside class="partner"><b>그림이 있는 총회 기도문</b>'
+               '<a href="/namjeondo-assembly-prayer/">남전도회 총회 대표기도문 — 한 해를 마무리하며 (수채화 5점)</a>'
+               '<small>감사·겸손한 고백·새해 다짐을 그림과 함께 읽는 2분 기도문입니다. 여전도회·권사회도 호칭만 바꿔 쓸 수 있습니다.</small></aside>')
+
+
 def is_exam(p):
     return p.get("worship_type") == "수험생·시험" or "수험생" in p.get("title", "")
 
@@ -168,7 +173,7 @@ def dated_seo_title(p):
 def enrich(p):
     """빌드용 파생 필드. stats 는 매번 재계산한다 (7장)."""
     p["seo_title"] = dated_seo_title(p)
-    p["exam_box"] = EXAM_BOX if is_exam(p) else ""
+    p["exam_box"] = EXAM_BOX if is_exam(p) else (YEAREND_BOX if p["worship_type"] in ("정기총회", "연말 총회·송년") else "")
     body = "\n\n".join(p["paragraphs"])
     n = chars_no_space(body)
     p["stats"] = {
@@ -517,7 +522,7 @@ def main():
     for k, name, items in types_present:
         render("list.html", f"/type/{k}/", kind="type", key=k, title=f"{name} 기도문 모음",
                lead=TYPE_LEADS.get(k, f"{name} 기도문을 한곳에 모았습니다."), items=items,
-               box=EXAM_BOX if k in ("exam", "suneung-daily") else "")
+               box=EXAM_BOX if k in ("exam", "suneung-daily") else (YEAREND_BOX if k == "year-end" else ""))
 
     # ---- 달력
     scheduled = [p for p in all_prayers if p.get("status") in ("reviewed", "scheduled") and p["id"] not in pub_ids]
@@ -552,7 +557,7 @@ def main():
     urls += [(f"/group/{k}/", TODAY.isoformat(), "weekly") for k in GROUP_KEYS.values()
              if any(p["group_key"] == k for p in pub)]
     urls += [(f"/calendar/{cm['ym']}/", TODAY.isoformat(), "weekly") for cm in cal_months]
-    urls += [("/anytime/", TODAY.isoformat(), "weekly"), ("/about/", LAUNCH.isoformat(), "yearly"), ("/guide/", TODAY.isoformat(), "monthly"), ("/communion/", "2026-11-08", "monthly"), ("/thanksgiving-meaning/", "2026-11-08", "monthly"),
+    urls += [("/anytime/", TODAY.isoformat(), "weekly"), ("/about/", LAUNCH.isoformat(), "yearly"), ("/guide/", TODAY.isoformat(), "monthly"), ("/communion/", "2026-11-08", "monthly"), ("/thanksgiving-meaning/", "2026-11-08", "monthly"), ("/namjeondo-assembly-prayer/", "2026-11-14", "monthly"),
              ("/privacy/", LAUNCH.isoformat(), "yearly"), ("/contact/", LAUNCH.isoformat(), "yearly")]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, lm, cf in urls:
